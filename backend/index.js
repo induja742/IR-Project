@@ -10,6 +10,7 @@ const app = express()
 app.use(cors())
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
+app.use('/viewDocument', express.static(__dirname + '/documents'));
 app.use('/', require('./routes'))
 
 app.listen(process.env.PORT||5000, ()=>{

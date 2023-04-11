@@ -20,13 +20,23 @@ async function readFileNames() {
 }
 
 // Function to read contents of a file.
-async function readFileContents(fileName) {
+async function readFileContents(fileName, title) {
     let readFile = await fs.readFile(__dirname+'/../../documents/'+fileName)
     try {
       let pdfExtract = await pdfParse(readFile)
-      pdfExtract.text = runPythonModel([pdfExtract.text])
-      let obj = {content: pdfExtract.text, title: pdfExtract.text.substring(0,50), body:pdfExtract.text.substring(0,200), path: fileName}
-      return obj;
+      // pdfExtract.text = runPythonModel([pdfExtract.text])
+      if(title.length) title = pdfExtract.text.substring(0,50);
+      let body = pdfExtract.text.substring(0,200)
+      let content = runPythonModel([pdfExtract.text]), path = fileName;
+      content = content.split(' ')
+      let contentMap = new Map()
+      for(let i=0;i<content.length;i++) if(contentMap.has(content[i])) contentMap[content[i]]++; else contentMap[content[i]]=1;
+      let mappings = [];
+      for (var [key, value] of Object.entries(contentMap)) {  
+        mappings.push({term: key, count: value});
+      }
+      let docToBeSaved = {mappings, body, title, path}
+      // console.log(docToBeSaved);
     } catch (error) {
       throw new Error(error)
     }
@@ -48,16 +58,14 @@ function runPythonModel(arr) {
   }
 }
 
-async function getPDF(file) {
-    let filesArr = [];
+async function getPDF() {
     let files = await readFileNames()
     console.log(files);
     for(let i=0;i<files.length;i++) {
-        let contents = await readFileContents(files[i])
+      console.log('Reading ', files[i]);
+        await readFileContents(files[i], '')
         // contents.content = runPythonModel([contents.content])
-        filesArr.push(contents)
     }
-    console.log(filesArr);
 }
 
 module.exports = getPDF

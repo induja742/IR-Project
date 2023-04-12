@@ -1,1 +1,104 @@
 
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+body {
+    background-color: #3a3939;
+    color: white;
+  }
+
+  .search-bar-all-documents {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  .search-text-plain
+  {
+    margin-right: 80px;
+    font-size: 25px;
+  }
+  .search-bar-submit {
+    height: 100%;
+    font-size: inherit;
+    height: 40px;
+  }
+  
+  .search-bar-all-documents i {
+    margin-right: 5px;
+   
+  }
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .search-bar-input {
+    width: 600px;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 40px;
+    position: relative;
+  }
+ 
+  .plaintext{
+    content: "Enter your search terms here";
+    display: block;
+    margin-top: 5px;
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 2px;
+  }
+  .search-bar-clear {
+    height: 100%;
+    font-size: inherit;
+    height: 40px;
+  }
+  
+  .search-bar-clear:hover {
+    color: #000000;
+  }
+  .hr {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+
+  
+  .search-bar-input::placeholder {
+    color: #100f0f;
+  }
+  
+  .search-results-container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-result {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    border: 1px solid #100f0f;
+    margin-bottom: 10px;
+    background-color: #fff;
+  }
+  
+  .search-result-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #100f0f;
+  }
+  
+  .search-result-description {
+    font-size: 14px;
+    color: #100f0f;
+  }

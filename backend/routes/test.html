@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sample HTML Code - NewsLetter Form</title>
+  <title>Documents Upload Form</title>
   <style>
    @import url("background: #fff url(https://lh3.googleusercontent.com/dp5g9REc2bLo5qToyV3sWzs25PuoH9G9KljH0XjEfxfW49D_6yH0juTI80sqJ_ecBnlO9KVXJXuIFYfHyOgyyit2BcNRJMnVI-YLBo4rmg) center bottom/cover no-repeat;");
 
@@ -16,7 +16,7 @@
       background-size: cover;
       display: flex;
       justify-content: center;
-      padding: 3rem 0;
+      padding: 0rem 0;
       font-family: "Poppins", sans-serif;
       font-size: 1rem;
       color: white;
@@ -27,22 +27,24 @@
       max-width: 350px;
       display: flex;
       flex-direction: column;
-      align-items: right;
+      align-items: center;
+
     }
 
     .intro {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: left;
       align-items: center;
       text-align: center;
       width: 70%;
+      
       margin-bottom: 3rem;
     }
 
     .title {
-      padding: 1rem;
-      font-size: 1rem;
+      font-size: larger;
+      
     }
 
     .sign-up {
@@ -64,11 +66,15 @@
       flex-direction: column;
       align-items: center;
       padding: 1.2rem;
-      border-radius: 0.8rem;
+      /* margin-top:0.5px;
+      margin-bottom: 100px; */
+      margin-left: 100px;
       box-shadow: 0 0 10px 6px #000;
       color: #0000ffff;
-      background-color: transparent;
+      background:rgba(115, 107, 107, 0.01);
+      
     }
+
 
     .form-input {
       width: 100%;
@@ -124,16 +130,14 @@
 
     .submit-btn {
       cursor: pointer;
-      width: 45%;
-      padding: 1em;
-      margin-bottom: 1em;
-      border: none;
-      border-bottom: 5px solid #0000ff;
-      border-radius: 0.5em;
-      background-color: #0000ff;
+      padding-top: 10px;
+      padding-right:20px;
+      padding-left: 20px;
+      padding-bottom: 10px;
+      background-color: rgb(0, 0, 97);
+      text-align: center;
       color: white;
-      font-weight: 600;
-      text-transform: uppercase;
+     border-radius: 5px;
     }
 
     .submit-btn:hover {
@@ -155,18 +159,23 @@
       body {
         align-items: center;
         min-height: 100vh;
+        margin-left: 50px;
+        margin-right: 50px;
       }
 
       main {
         max-width: 100vw;
         flex-direction: row;
-        justify-content: center;
+        justify-content: center  ;
+        /* border: 2px solid #fff; */
+        height: 100vh;
+        width: 100vw;
       }
 
       .intro {
         align-items: flex-start;
         text-align: left;
-        width: 45%;
+        width: 50%;
         margin-right: 1rem;
       }
 
@@ -180,6 +189,12 @@
       .sign-up {
         width: 45%;
         height: 200px;
+        margin-top: -125px;
+      }
+      .headings{
+        color: white;
+        margin-top: 10px;
+       
       }
 
       .sign-up-form {
@@ -188,6 +203,9 @@
 
       .sign-up-form input {
         padding-left: 1.5em;
+      }
+      .bg-white {
+        background-color: #fff;
       }
     }
   </style>
@@ -206,13 +224,16 @@
       <!-- the form itself -->
       <form class="sign-up-form" action="/saveDocument" method="post" enctype="multipart/form-data">
         <div class="form-input">
-          <input type="text" name="title" id="Pdf Title" placeholder="Pdf Title" required>
+          <h1 class="headings">Pdf title</h1>
+          <input type="text" name="title" id="Pdf Title" placeholder="Enter your text" required>
           <span>!</span>
           <p class="warning">Document name cannot be empty</p>
         </div>
 
         <div class="form-input">
-          <input type="file" name="document" id="myfile" >
+          <h1 class="headings">Upload Pdf</h1>
+          <h6 class="headings">(Choose from your computer)</h6>
+          <input type="file" class="bg-white"  name="document" id="myfile" >
           <span>!</span>
           <p class="warning">myflie  cannot be empty</p>
         </div>

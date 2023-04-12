@@ -15,11 +15,11 @@ async function searchDocuments(req, res) {
         console.error(err);
         return res.json({ success: false, message: 'Please try again later' })
     }
-
+    if(queryVector.size==0) return res.json({success: true, matchedDocuments: []});
     let matchedDocuments;
     try {
         matchedDocuments = await getRankedDocuments(queryVector);
-        console.log('Returned docs by ranking engine: ', matchedDocuments)
+        // console.log('Returned docs by ranking engine: ', matchedDocuments)
     } catch (err) {
         console.error("Error in ranking engine");
         console.error(err);

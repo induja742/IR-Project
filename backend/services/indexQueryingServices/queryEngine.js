@@ -7,13 +7,27 @@ async function getQueryVector(query) {
     let mappings = await TermIdMapping.find({
         'term_name': {'$in': query}
     })
-    let termIndexCount = new Map(), termIndex = new Map();
-    for(let i=0;i<mappings.length;i++) {termIndex[mappings[i].term_name] = mappings[i].term_id; termIndexCount[mappings[i].term_id]=0;}
-    for(let i=0;i<query.length;i++) if(termIndex.has(query[i])) termIndexCount[termIndex[query[i]]]++;
-    for(let i=0;i<query.length;i++) if(termIndex.has(query[i])) termIndexCount[termIndex[query[i]]] = 1 + Math.log(termIndexCount[termIndex[query[i]]]);
-    console.log(termIndexCount);
 
-    return termIndexCount;
+    let dbTermToIndex = new Map();
+    for(let i=0;i<mappings.length;i++) {
+        dbTermToIndex.set(mappings[i].term_name, mappings[i].term_id);
+    } 
+
+    let indexToCount = new Map();
+    for(let i=0;i<query.length;i++) {
+        let currIndex = -1;
+        if(dbTermToIndex.has(query[i])) {
+            currIndex = dbTermToIndex.get(query[i]);
+        }
+        if(currIndex!=-1) {
+            if(indexToCount.has(currIndex)) {
+                indexToCount.set(currIndex,indexToCount.get(currIndex)+1);
+            } else {
+                indexToCount.set(currIndex, 1);
+            }
+        }
+    }
+    return indexToCount;
 }
 
 module.exports = {getQueryVector}

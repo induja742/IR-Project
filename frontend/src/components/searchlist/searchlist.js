@@ -1,8 +1,50 @@
+import axios from "axios";
+import { url } from '../../backendUrl';
+import React, { useEffect, useState } from 'react';
+import './searchlist.css';
 
-import React, { useState } from 'react';
-import './SearchBar.css';
-
-function Search() {
+function Search({query}) {
+  const [result, setResult] = useState();
+  const [newQuery, setNewQuery] = useState(query);
+  const [input, setInput] = useState(query)
+  function makeQuery(e) {
+    e.preventDefault();
+    console.log("I'm triggered");
+    axios.post(`${url}/search`, {
+      query: input
+    })
+      .then(response=>{
+        if(!response.data.success) {
+          alert("Something went wrong, try again later");
+          return;
+        }
+        console.log(response)
+        setResult(response.data.matchedDocuments)
+        
+      })
+      .catch(err=>{
+        console.log(err)
+        alert("Something went wrong, try again later");
+      })
+  }
+  useEffect(()=>{
+    axios.post(`${url}/search`, {
+      query: query
+    })
+      .then(response=>{
+        if(!response.data.success) {
+          alert("Something went wrong, try again later");
+          return;
+        }
+        console.log(response)
+        setResult(response.data.matchedDocuments)
+        
+      })
+      .catch(err=>{
+        console.log(err)
+        alert("Something went wrong, try again later");
+      })
+  },[query])
   const [searchText, setSearchText] = useState('');
   const [searchResults, setSearchResults] = useState([
     { title: 'Result 1', description: 'Description for result 1' },
@@ -31,11 +73,10 @@ function Search() {
 
   return (
     <div className="search-container">
-      <div onSubmit={handleSearchSubmit}>
+      <form onSubmit={makeQuery}>
         <div className="search-bar">
           <span className="search-text-plain"> Results  </span>
-          
-          <input type="text" className="search-bar-input" placeholder="..." value={searchText}  onChange={handleSearchChange} /> 
+            <input type="text" className="search-bar-input" placeholder="..." value={input}  onChange={(e)=>{setInput(e.target.value)}} /> 
           {searchText.length > 0 && (
             <span className="search-bar-clear" onClick={handleClearSearch}><i className="fa-sharp fa-solid fa-xmark"></i></span>
           )}
@@ -45,14 +86,14 @@ function Search() {
           </div>
           <hr style={{ width: '100%' }}/>
         </div>
-      </div>
+      </form>
      
-      {searchResults.length > 0 && (
+      {result && (
         <div className="search-results-container">
-          {searchResults.map((result, index) => (
+          {result.map((currResult, index) => (
             <div className="search-result" key={index}>
-              <div className="search-result-title">{result.title}</div>
-              <div className="search-result-description">{result.description}</div>
+              <a href={`${url}/viewDocument/${currResult.path_to_doc}`} className="search-result-title">{currResult.title || currResult.body.substring(0,50)}</a>
+              <div className="search-result-description">{currResult.body}</div>
             </div>
           ))}
         </div>

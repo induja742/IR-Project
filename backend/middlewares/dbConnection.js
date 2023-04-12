@@ -5,7 +5,7 @@ const MONGO_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_P
 const connectToDb = async () => {
     try {
         await mongoose.connect(MONGO_URI);
-        getQueryVector('Information term frequency term')
+        getQueryVector('Information abcdefghijkl')
         console.log("DB connected successfully")
     } catch(connectionError) {
         console.error(connectionError)

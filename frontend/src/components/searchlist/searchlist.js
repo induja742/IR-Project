@@ -30,7 +30,7 @@ function Search() {
         <div className="search-bar">
         <span className="search-text-plain"> Results  </span>
           <input type="text" className="search-bar-input" placeholder="Search..." value={searchText} onChange={handleSearchChange} />
-          {searchText.length > 0 && <button type="button" className="search-bar-clear" onClick={() => setSearchText('')}><i className="fas fa-search"></i></button>}
+          {searchText.length > 0 && <button type="button" className="search-bar-clear" onClick={() => setSearchText('')}><i class="fa-sharp fa-solid fa-xmark"></i></button>}
           <button type="submit" className="search-bar-submit"><i className="fas fa-search"></i></button>
           <div className="search-bar-all-documents">
           <i className="fas fa-search"></i>

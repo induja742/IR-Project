@@ -2,103 +2,116 @@
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 body {
-    background-color: #3a3939;
-    color: white;
-  }
+  background-color: #3a3939;
+  color: white;
+  margin-left: 0;
+}
 
-  .search-bar-all-documents {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-  }
-  .search-text-plain
-  {
-    margin-right: 80px;
-    font-size: 25px;
-  }
-  .search-bar-submit {
-    height: 100%;
-    font-size: inherit;
-    height: 40px;
-  }
-  
-  .search-bar-all-documents i {
-    margin-right: 5px;
-   
-  }
+.search-bar-all-documents {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.search-text-plain {
+  margin-right: 6.25vw; /* equivalent to 80px at viewport width of 1280px */
+  font-size: 1.953125vw; /* equivalent to 25px at viewport width of 1280px */
+}
+.search-bar-submit {
+  height: 100%;
+  font-size: inherit;
+  height: 2.5vw; /* equivalent to 40px at viewport width of 1280px */
+}
+
+.search-bar-all-documents i {
+  margin-right: 0.390625vw; /* equivalent to 5px at viewport width of 1280px */
+}
 
 .search-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-  }
-  
-  .search-bar-input {
-    width: 600px;
-    height: 40px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    font-size: 16px;
-    outline: none;
-    margin-bottom: 40px;
-    position: relative;
-  }
- 
-  .plaintext{
-    content: "Enter your search terms here";
-    display: block;
-    margin-top: 5px;
-    font-size: 20px;
-    color: #ffffff;
-    margin-bottom: 2px;
-  }
-  .search-bar-clear {
-    height: 100%;
-    font-size: inherit;
-    height: 40px;
-  }
-  
-  .search-bar-clear:hover {
-    color: #000000;
-  }
-  .hr {
-    border: none;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 20px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3.90625vw; /* equivalent to 50px at viewport width of 1280px */
+}
 
-  
-  .search-bar-input::placeholder {
-    color: #100f0f;
-  }
-  
-  .search-results-container {
-    width: 100%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .search-result {
-    width: 100%;
-    max-width: 600px;
-    padding: 10px;
-    border: 1px solid #100f0f;
-    margin-bottom: 10px;
-    background-color: #fff;
-  }
-  
-  .search-result-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #100f0f;
-  }
-  
-  .search-result-description {
-    font-size: 14px;
-    color: #100f0f;
-  }
+.search-bar-input {
+  width: 48vw; /* equivalent to 600px at viewport width of 1280px */
+  height: 0.20vw; /* equivalent to 40px at viewport width of 1280px */
+  padding: 1.5625vw; /* equivalent to 20px at viewport width of 1280px */
+  border: 0.078125vw solid #ccc; /* equivalent to 1px at viewport width of 1280px */
+  border-radius: 1.5625vw; /* equivalent to 20px at viewport width of 1280px */
+  font-size: 1.25vw; /* equivalent to 16px at viewport width of 1280px */
+  outline: none;
+  margin-bottom: 1.25vw; /* equivalent to 40px at viewport width of 1280px */
+  position: relative;
+  background-color: transparent;
+  color: white;
+}
+.search-bar-input::placeholder {
+  color: white;
+}
+
+
+.plaintext {
+  content: "Enter your search terms here";
+  display: block;
+  margin-top: 0.390625vw; /* equivalent to 5px at viewport width of 1280px */
+  font-size: 1.5625vw; /* equivalent to 20px at viewport width of 1280px */
+  color: #ffffff;
+  margin-bottom: 0.15625vw; /* equivalent to 2px at viewport width of 1280px */
+}
+
+.search-bar-clear {
+  height: 100%;
+  font-size: inherit;
+  height: 2.5vw; /* equivalent to 40px at viewport width of 1280px */
+}
+
+.search-bar-clear:hover {
+  color: #000000;
+}
+
+.hr {
+  border: none;
+  border-bottom: 0.078125vw solid #ccc; /* equivalent to 1px at viewport width of 1280px */
+  margin-bottom: 1.5625vw; /* equivalent to 20px at viewport width of 1280px */
+}
+
+.search-bar-input::placeholder {
+  color: #100f0f;
+}
+
+.search-results-container {
+  width: 100%;
+  max-width: 46.875vw; /* equivalent to 600px at viewport width of 1280px */
+  flex-direction: column;
+  margin-right: 8vw;
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  position: relative;
+}
+
+.search-result {
+  width: 100%;
+  max-width: 46.875vw; /* equivalent to 600px at viewport width of 1280px */
+  padding: 1vw; /* equivalent to 20px at viewport width of 1280px */
+  border: 0.078125 vw; /* equivalent to 1px at viewport width of 1280px */
+  margin-bottom: 1.5625vw; /* equivalent to 20px at viewport width of 1280px */
+  background-color: transparent;
+  margin-left: 0;
+}
+
+.search-result-title {
+  font-size: 1.40625vw; /* equivalent to 18px at viewport width of 1280px */
+  font-weight: bold;
+  margin-bottom: 0.390625vw; /* equivalent to 5px at viewport width of 1280px */
+  color: #fff6f6;
+  text-decoration: underline;
+}
+
+.search-result-description {
+  font-size: 1.09375vw; /* equivalent to 14px at viewport width of 1280px */
+  color: #f3eded;
+  font-style: italic;
+
+} 

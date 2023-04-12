@@ -14,6 +14,7 @@ const { promises: fs } = require('fs');
 const pdfParse = require('pdf-parse')
 const documentToDocVector = require("./documentToDocVector.js");
 const DocDetails = require("../../models/docDetails.model.js");
+require('dotenv').config()
 
 // Function to fetch all docs in documents directory.
 async function readFileNames() {
@@ -59,7 +60,7 @@ async function readFileContents(fileName, title) {
 // Function for tokenizing, removal of stopwords, extra characters, stemming
 function runPythonModel(arr) {
     console.log(arr)
-    const python = spawnSync("python", [
+    const python = spawnSync(process.env.PYTHON_TRIGGER, [
         `./services/indexCreationServices/preprocess.py`,
         JSON.stringify({ arr })
     ]);

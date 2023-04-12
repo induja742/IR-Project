@@ -7,6 +7,7 @@ const {getPDF} = require('./services/indexCreationServices/termComputeEngine.js'
 getPDF()
 connectToDb();
 
+
 const app = express()
 app.use(cors())
 app.use(express.urlencoded({extended:false}))

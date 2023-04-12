@@ -36,7 +36,8 @@ async function readFileContents(fileName, title) {
         console.log(content)
         content = content.split(' ')
         let contentMap = new Map()
-        for (let i = 0; i < content.length; i++) if (contentMap.has(content[i])) contentMap[content[i]]++; else contentMap[content[i]] = 1;
+        for (let i = 0; i < content.length; i++) contentMap[content[i]] = 0;
+        for (let i = 0; i < content.length; i++) contentMap[content[i]]++;
         let mappings = [];
         for (var [key, value] of Object.entries(contentMap)) {
             mappings.push({ term: key, count: value });
@@ -59,7 +60,7 @@ async function readFileContents(fileName, title) {
 // Function for tokenizing, removal of stopwords, extra characters, stemming
 function runPythonModel(arr) {
     console.log(arr)
-    const python = spawnSync("python", [
+    const python = spawnSync("python3", [
         `./services/indexCreationServices/preprocess.py`,
         JSON.stringify({ arr })
     ]);
@@ -95,4 +96,4 @@ async function getPDF() {
     }
 }
 
-module.exports = {getPDF, readFileContents}
+module.exports = {getPDF, readFileContents, runPythonModel}

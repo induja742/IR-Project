@@ -2,9 +2,6 @@ require('dotenv').config()
 let express = require('express')
 let connectToDb = require('./middlewares/dbConnection.js')
 let cors = require('cors')
-const {getPDF} = require('./services/indexCreationServices/termComputeEngine.js')
-
-getPDF()
 connectToDb();
 
 

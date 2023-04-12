@@ -45,13 +45,12 @@ async function readFileContents(fileName, title) {
         let docToBeSaved = { mappings, body, title, path }
         // console.log(docToBeSaved);
 
-        documentToDocVector(docToBeSaved)
-        .then(()=>{
+        try {
+            let resp = await documentToDocVector(docToBeSaved)
             console.log("Success in documentToDocVector")
-        })
-        .catch(err => {
+        } catch(err){
             console.error(err)
-        })
+        }
     } catch (error) {
         throw new Error(error)
     }
@@ -60,7 +59,7 @@ async function readFileContents(fileName, title) {
 // Function for tokenizing, removal of stopwords, extra characters, stemming
 function runPythonModel(arr) {
     console.log(arr)
-    const python = spawnSync("python3", [
+    const python = spawnSync("python", [
         `./services/indexCreationServices/preprocess.py`,
         JSON.stringify({ arr })
     ]);

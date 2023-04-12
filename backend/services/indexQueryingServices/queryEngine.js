@@ -10,7 +10,10 @@ async function getQueryVector(query) {
     let termIndexCount = new Map(), termIndex = new Map();
     for(let i=0;i<mappings.length;i++) {termIndex[mappings[i].term_name] = mappings[i].term_id; termIndexCount[mappings[i].term_id]=0;}
     for(let i=0;i<query.length;i++) termIndexCount[termIndex[query[i]]]++;
+    for(let i=0;i<query.length;i++) termIndexCount[termIndex[query[i]]] = 1 + Math.log(termIndexCount[termIndex[query[i]]]);
     console.log(termIndexCount);
+
+    return termIndexCount;
 }
 
 module.exports = {getQueryVector}

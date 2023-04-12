@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import './SearchBar.css';
 
@@ -24,28 +25,34 @@ function Search() {
     // Do a search here using the searchText state variable and update the searchResults state variable accordingly
   };
 
+  const handleClearSearch = () => {
+    setSearchText('');
+  };
+
   return (
     <div className="search-container">
-      <form onSubmit={handleSearchSubmit}>
+      <div onSubmit={handleSearchSubmit}>
         <div className="search-bar">
-        <span className="search-text-plain"> Results  </span>
-          <input type="text" className="search-bar-input" placeholder="Search..." value={searchText} onChange={handleSearchChange} />
-          {searchText.length > 0 && <button type="button" className="search-bar-clear" onClick={() => setSearchText('')}><i class="fa-sharp fa-solid fa-xmark"></i></button>}
+          <span className="search-text-plain"> Results  </span>
+          
+          <input type="text" className="search-bar-input" placeholder="..." value={searchText}  onChange={handleSearchChange} /> 
+          {searchText.length > 0 && (
+            <span className="search-bar-clear" onClick={handleClearSearch}><i className="fa-sharp fa-solid fa-xmark"></i></span>
+          )}
           <button type="submit" className="search-bar-submit"><i className="fas fa-search"></i></button>
           <div className="search-bar-all-documents">
-          <i className="fas fa-search"></i>
-          <span className="search-bar-all-documents-text">All Documents</span>
-     </div>
+          <span className="search-bar-all-documents-text"> <i className="fas fa-search"></i>All Documents</span>
+          </div>
+          <hr style={{ width: '100%' }}/>
         </div>
-      </form>
-      <hr style={{ width: '100%' }}/>
+      </div>
+     
       {searchResults.length > 0 && (
         <div className="search-results-container">
           {searchResults.map((result, index) => (
             <div className="search-result" key={index}>
               <div className="search-result-title">{result.title}</div>
               <div className="search-result-description">{result.description}</div>
-            
             </div>
           ))}
         </div>

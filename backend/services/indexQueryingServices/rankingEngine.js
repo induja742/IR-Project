@@ -13,6 +13,24 @@ async function getRankedDocuments(queryVector) {
     try {
         //Optimize later
         candidateDocuments = await DocDetails.find()
+        // candidateDocuments = await db.collection.aggregate([
+        //     {
+        //         "$addFields": {
+        //             "myarray": {
+        //                 "$map": {
+        //                     "input": selectedIds,
+        //                     "as": "doc_vector",
+        //                     "in": {
+        //                         "$arrayElemAt": [
+        //                             "$myarray",
+        //                             "$$doc_vector"
+        //                         ]
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // ])
     } catch (dbError) {
         console.error("Error in fetching doc_details from database");
         throw dbError;
